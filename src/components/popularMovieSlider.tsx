@@ -23,7 +23,7 @@ const PopularMovieSlider = () => {
   const settings: Settings = {
     dots: true,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     arrows:false,
     speed: 500,
     slidesToShow: 1,
