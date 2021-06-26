@@ -74,6 +74,26 @@ p {
 	color: $Grayish_Blue;
 }
 
+.loading {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	border: 3px solid #00acc1;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin .8s infinite linear;
+	-o-animation: cssload-spin .8s infinite linear;
+	-ms-animation: cssload-spin .8s infinite linear;
+	-webkit-animation: cssload-spin .8s infinite linear;
+	-moz-animation: cssload-spin .8s infinite linear;
+}
+@keyframes cssload-spin {
+	100% {
+		transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
 // Visibility
 .hide-for-desktop {
 	@include breakpoint-up(large) {

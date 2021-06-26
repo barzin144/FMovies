@@ -98,7 +98,8 @@
 				color: #adb5bd;
 				opacity: 1;
 			}
-			&:focus {
+			&:focus,
+			&:hover {
 				background-color: rgba(222, 226, 230, .9);
 				color: #343a40;
 				box-shadow: 0 0 11px #111;
@@ -109,19 +110,6 @@
 				+ .header__searchBox__searchButton {
 					background-image: url(../images/search-black.svg);
 				}
-			}
-		}
-		&:hover {
-			background-color: rgba(222, 226, 230, .9);
-			color: #343a40;
-			box-shadow: 0 0 11px #111;
-			input::placeholder {
-				color: #6c757d;
-				opacity: 1;
-			}
-
-			.header__searchBox__searchButton {
-				background-image: url(../images/search-black.svg);
 			}
 		}
 
@@ -136,20 +124,53 @@
 			top: 0;
 			left: 0;
 		}
+
+		&__result {
+			background-color: rgba(255, 255, 255, .2);
+			padding: 0 pxToRem(5);
+			width: 100%;
+			border-radius: pxToRem(5);
+			position: absolute;
+			top: pxToRem(55);
+
+			&__item {
+				background-color: rgba(0, 0, 0, .5);
+				width: 100%;
+				margin: pxToRem(5) 0;
+				padding: pxToRem(5);
+				border-radius: pxToRem(5);
+
+				&:hover {
+					background-color: rgba(0, 0, 0, .2);
+				}
+
+				img {
+					border-radius: pxToRem(5);
+					background-color: rgba(255, 255, 255, .2);
+				}
+				a {
+					display: block;
+					padding: pxToRem(5);
+					color: $Grayish_Blue;
+					font-size: $font_med;
+					font-weight: bold;
+				}
+				small {
+					display: block;
+					padding: pxToRem(5);
+					color: $Grayish_Blue;
+				}
+			}
+		}
 	}
 	.mobileSearchBox {
 		width: 100%;
-		&:hover,
-		&:focus {
-			.mobileSearchBox-close {
-				background-image: url(../images/close-black.svg);
-			}
-		}
+
 		.mobileSearchBox-close {
 			content: "";
 			width: pxToRem(45);
 			height: pxToRem(45);
-			background-image: url(../images/close-white.svg);
+			background-image: url(../images/close.svg);
 			background-repeat: no-repeat;
 			background-position-x: center;
 			background-position-y: center;
@@ -215,9 +236,9 @@
 			}
 		}
 	}
-	&__mobileSearch {
-		width: pxToRem(45);
-		height: pxToRem(45);
+	&__mobileSearchIcon {
+		width: pxToRem(40);
+		height: pxToRem(40);
 		background-image: url(../images/search-white.svg);
 		background-repeat: no-repeat;
 		background-position-x: center;
@@ -251,6 +272,7 @@
 			padding-top: pxToRem(25);
 			letter-spacing: 3px;
 			position: relative;
+			cursor: pointer;
 			> i {
 				width: pxToRem(16);
 				height: pxToRem(16);
