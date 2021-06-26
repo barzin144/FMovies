@@ -119,7 +119,7 @@
 		}
 
 		&__result {
-			background-color: rgba(255, 255, 255, .2);
+			background-color: #212529;
 			padding: 0 pxToRem(5);
 			width: 100%;
 			border-radius: pxToRem(5);
@@ -127,7 +127,7 @@
 			top: pxToRem(55);
 
 			&__item {
-				background-color: rgba(0, 0, 0, .5);
+				background-color: #16181b;
 				width: 100%;
 				margin: pxToRem(5) 0;
 				padding: pxToRem(5);
