@@ -8,6 +8,7 @@ const config = {
 };
 
 export const thumbnailPath = "https://image.tmdb.org/t/p/w154";
+export const backdrop_path = "https://image.tmdb.org/t/p/w1280";
 
 export const getGenres = (): Promise<AxiosResponse<any>> => {
     return axios.get('/genre/movie/list', config);
@@ -25,4 +26,8 @@ export const getMoviesByKeyword = (keyword: string): Promise<AxiosResponse<any>>
 
 export const cancelMovieSearchToken = () => {
     cancelTokenSource.cancel("Operation canceled due to new request.");
+}
+
+export const getPopularMovies = ():Promise<AxiosResponse<any>> => {
+    return axios.get('/discover/movie?sort_by=popularity.desc&include_adult=false&page=1', config);
 }

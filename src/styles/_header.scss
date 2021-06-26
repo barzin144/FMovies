@@ -1,17 +1,10 @@
 .header {
+	position: absolute;
+	width: 100%;
+	z-index: 2;
 	nav {
 		position: relative;
 		z-index: 1;
-	}
-
-	@include breakpoint-down(medium) {
-		margin-bottom: pxToRem(70);
-	}
-	@include breakpoint-down(small) {
-		margin-bottom: 0;
-	}
-	@include breakpoint-up(large) {
-		margin-bottom: pxToRem(90);
 	}
 
 	.overlay {
