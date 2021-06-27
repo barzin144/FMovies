@@ -1,7 +1,7 @@
 import React from "react";
 import noImage from "../images/noImage.svg";
 import { cancelMovieSearchToken, getMoviesByKeyword, thumbnailPath } from "../helper";
-interface Props{
+interface Props {
     classNames?: string
 }
 interface SearchResult {
@@ -26,8 +26,13 @@ const Search = (props: Props) => {
     }
 
     const handleOutSideClick = (e: MouseEvent) => {
-        if (!node.current.contains(e.target)) {
-            closeSearchResult();
+        try {
+            if (!node.current.contains(e.target)) {
+                closeSearchResult();
+                document.removeEventListener("click", handleOutSideClick, false);
+            }
+        }
+        catch (error) {
             document.removeEventListener("click", handleOutSideClick, false);
         }
     }
