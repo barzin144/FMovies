@@ -1,0 +1,106 @@
+.searchBox {
+	background-color: rgba(255, 255, 255, .2);
+	width: pxToRem(340);
+	height: pxToRem(45);
+	border-radius: pxToRem(20);
+	cursor: pointer;
+	transition: all 300ms ease-in-out;
+	position: relative;
+
+	input {
+		background-color: rgba(255, 255, 255, .2);
+		color: #fff;
+		border: none;
+		outline: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 22.5px;
+		line-height: 100%;
+		padding-right: 22.5px;
+		padding-left: 50px;
+		font-size: $font_med;
+		transition: all 300ms ease-in-out;
+
+		&::placeholder {
+			color: #adb5bd;
+			opacity: 1;
+		}
+		&:focus,
+		&:hover {
+			background-color: rgba(222, 226, 230, .9);
+			color: #343a40;
+			box-shadow: 0 0 11px #111;
+			&::placeholder {
+				color: #6c757d;
+				opacity: 1;
+			}
+			+ .searchBox__searchButton {
+				background-image: url(../images/search-black.svg);
+			}
+		}
+	}
+
+	&__searchButton {
+		width: pxToRem(45);
+		height: pxToRem(45);
+		background-image: url(../images/search-white.svg);
+		background-repeat: no-repeat;
+		background-position-x: center;
+		background-position-y: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__result {
+		background-color: #212529;
+		padding: 0 pxToRem(5);
+		width: 100%;
+		border-radius: pxToRem(5);
+		position: absolute;
+		top: pxToRem(55);
+
+		&__item {
+			background-color: #16181b;
+			width: 100%;
+			margin: pxToRem(5) 0;
+			padding: pxToRem(5);
+			border-radius: pxToRem(5);
+
+			&:hover {
+				background-color: rgba(0, 0, 0, .2);
+			}
+
+			img {
+				border-radius: pxToRem(5);
+				background-color: rgba(255, 255, 255, .2);
+			}
+			a {
+				display: block;
+				padding: pxToRem(5);
+				color: $Grayish_Blue;
+				font-size: $font_med;
+				font-weight: bold;
+			}
+			small {
+				display: block;
+				padding: pxToRem(5);
+				color: $Grayish_Blue;
+			}
+		}
+	}
+}
+.mobileSearchBox {
+	width: 100%;
+
+	.mobileSearchBox-close {
+		content: "";
+		width: pxToRem(45);
+		height: pxToRem(45);
+		background-image: url(../images/close.svg);
+		background-repeat: no-repeat;
+		background-position-x: center;
+		background-position-y: center;
+		cursor: pointer;
+	}
+}
