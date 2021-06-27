@@ -28,7 +28,7 @@
 			@include breakpoint-down(small) {
 				font-size: 2em;
 			}
-			font-weight: 500;
+			font-weight: bold;
 			margin: 0;
 			margin-bottom: .2em;
 			text-shadow: 0 1px 10px #111;
@@ -58,36 +58,44 @@
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: top center;
-		}
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 40%;
-			opacity: 0.2;
+			&::before {
+				position: absolute;
+				z-index: 1;
+				content: "";
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				background: -moz-radial-gradient(center, ellipse cover, transparent 50%, #000 100%);
+				background: -webkit-gradient(
+					radial,
+					center center,
+					0,
+					center center,
+					100%,
+					color-stop(50%, transparent),
+					color-stop(100%, #000)
+				);
+				background: -webkit-radial-gradient(center, ellipse cover, transparent 50%, #000 100%);
+				background: -o-radial-gradient(center, ellipse cover, transparent 50%, #000 100%);
+				background: -ms-radial-gradient(center, ellipse cover, transparent 50%, #000 100%);
+				background: radial-gradient(ellipse at center, transparent 50%, #000 100%);
+			}
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				z-index: 1;
+				width: 100%;
+				height: 70px;
 
-			background-image: -o-linear-gradient(bottom, rgba(25, 25, 25, 0.8), transparent); //Opera
-			background-image: -moz-linear-gradient(bottom, rgba(25, 25, 25, 0.8), transparent); //Firefox
-			background-image: -webkit-linear-gradient(bottom, rgba(25, 25, 25, 0.8), transparent); //Safari & Chrome
-			background-image: -ms-linear-gradient(bottom, rgba(25, 25, 25, 0.8), transparent); //IE
-			background-image: linear-gradient(to bottom, rgba(25, 25, 25, 0.8), transparent);
-		}
-		&::after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 40%;
-			opacity: 0.2;
-
-			background-image: -o-linear-gradient(top, rgba(25, 25, 25, 0.8), transparent); //Opera
-			background-image: -moz-linear-gradient(top, rgba(25, 25, 25, 0.8), transparent); //Firefox
-			background-image: -webkit-linear-gradient(top, rgba(25, 25, 25, 0.8), transparent); //Safari & Chrome
-			background-image: -ms-linear-gradient(top, rgba(25, 25, 25, 0.8), transparent); //IE
-			background-image: linear-gradient(to top, rgba(25, 25, 25, 0.8), transparent);
+				background-color: rgba(17, 17, 17, 0);
+				background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(17, 17, 17, 0)), to(#111));
+				background-image: -webkit-linear-gradient(top, rgba(17, 17, 17, 0), #111);
+				background-image: -moz-linear-gradient(top, rgba(17, 17, 17, 0), #111);
+				background-image: -ms-linear-gradient(top, rgba(17, 17, 17, 0), #111);
+				background-image: -o-linear-gradient(top, rgba(17, 17, 17, 0), #111);
+				background-image: linear-gradient(top, rgba(17, 17, 17, 0), #111);
+			}
 		}
 	}
 }
