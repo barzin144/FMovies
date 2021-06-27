@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-	width: 100%;
+	max-width: pxToRem(1660);
 	margin: 0 auto;
 
 	&--pall {

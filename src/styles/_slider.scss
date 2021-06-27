@@ -4,40 +4,51 @@
 .slider {
 	&__info {
 		position: absolute;
-		bottom: 0;
+		line-height: 1.5;
+		bottom: pxToRem(100);
+		@include breakpoint-down(small) {
+			bottom: pxToRem(50);
+		}
 		@include breakpoint-down(small) {
 			max-width: 300px;
-			height: 50%;
 		}
-		height: 50%;
 		max-width: 650px;
 		color: #fff;
 		z-index: 2;
 		padding-left: pxToRem(30);
 
-		small {
-			display: inline-block;
-			padding: pxToRem(10) pxToRem(10) pxToRem(10) 0;
+		&__meta {
+			> a {
+				display: inline-block;
+				padding: pxToRem(10) pxToRem(10) pxToRem(10) 0;
+			}
 		}
 		h1 {
 			font-size: 3em;
+			@include breakpoint-down(small) {
+				font-size: 2em;
+			}
 			font-weight: 500;
 			margin: 0;
 			margin-bottom: .2em;
 			text-shadow: 0 1px 10px #111;
 		}
-		p {
+		&__desc {
+			@include breakpoint-down(small) {
+				display: none;
+			}
 			font-size: 1.15em;
-			color: #fff;
-			font-weight: 300;
-			max-height: pxToRem(150);
-			overflow: hidden;
+			color: $Gray;
 			text-shadow: 0 1px 15px #111;
+			width: pxToRem(650);
 		}
 	}
 	&__slide {
+		@include breakpoint-down(medium) {
+			height: 80vh;
+		}
 		@include breakpoint-down(small) {
-			height: 60vh;
+			height: 50vh;
 		}
 		height: 90vh;
 		overflow: hidden;
@@ -46,7 +57,7 @@
 			height: 100%;
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-position: top left;
+			background-position: top center;
 		}
 		&::before {
 			content: "";
