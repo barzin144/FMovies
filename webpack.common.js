@@ -39,5 +39,8 @@ module.exports = {
         use: "ts-loader"
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   }
 };

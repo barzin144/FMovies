@@ -11,7 +11,8 @@ module.exports = merge(common, {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     optimization: {
         minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin(), new HtmlWebpackPlugin({
