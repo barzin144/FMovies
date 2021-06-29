@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import Slider, { Settings } from "react-slick";
 import { getPopularMovies, backdropPath } from "../helper";
 
@@ -13,6 +14,7 @@ interface Movie {
 
 const PopularMovieSlider = () => {
   const [popularMovies, setPopularMovies] = React.useState(null as Movie[]);
+  const history = useHistory();
 
   React.useEffect(() => {
     getPopularMovies().then((respone) => {
@@ -38,10 +40,12 @@ const PopularMovieSlider = () => {
             <div className="slider__slide__image" style={{ backgroundImage: `url(${backdropPath}/${movie.backdrop_path})` }}>
               <div className="container">
                 <div className="slider__info" >
-                  <h1>{movie.title}</h1>
+                  <Link to={`/movies/${movie.id}`} className="slider__info__link">
+                    <h1>{movie.title}</h1>
+                  </Link>
                   <div className="slider__info__meta">
-                  <a><i className="far fa-calendar-alt"></i> {movie.release_date}</a>
-                  <a><i className="fas fa-star"></i> {movie.vote_average}</a>
+                    <a><i className="far fa-calendar-alt"></i> {movie.release_date}</a>
+                    <a><i className="fas fa-star"></i> {movie.vote_average}</a>
                   </div>
                   <div className="slider__info__desc">{movie.overview}</div>
                 </div>

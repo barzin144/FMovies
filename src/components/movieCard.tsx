@@ -19,7 +19,7 @@ const MovieCard = ({ poster, title, releaseDate, voteAverage, id }: Props) => {
                 </Link>
             </div>
             <div>
-                <a className="movieCard__title">{title}</a>
+                <Link to={`/movies/${id}`} className="movieCard__title">{title}</Link>
                 <a className="movieCard__releaseDate"><i className="far fa-calendar-alt"></i> {releaseDate}</a>
                 <a><i className="fas fa-star"></i> {voteAverage}</a>
             </div>
