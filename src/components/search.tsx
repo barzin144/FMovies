@@ -1,9 +1,12 @@
 import React from "react";
 import noImage from "../images/noImage.svg";
 import { cancelMovieSearchToken, getMoviesByKeyword, thumbnailPath } from "../helper";
+import { useHistory } from "react-router-dom";
+
 interface Props {
     classNames?: string
 }
+
 interface SearchResult {
     id: number,
     poster_path: string,
@@ -17,6 +20,7 @@ const Search = (props: Props) => {
     const [searchResult, setSearchResult] = React.useState(null as SearchResult[]);
     const [searchResultLoading, setSearchResultLoading] = React.useState(false);
     const [showSearchResult, setShowSearchResult] = React.useState(false);
+    const history = useHistory();
 
     const closeSearchResult = () => {
         cancelMovieSearchToken();
@@ -54,6 +58,12 @@ const Search = (props: Props) => {
             closeSearchResult();
         }
     }
+
+    const redirectToMovie = (id: number) => {
+        closeSearchResult();
+        history.push(`/movies/${id}`);
+    }
+
     return (
         <div ref={node} className={`searchBox ${props.classNames ? props.classNames : ''}`}>
             <input onChange={searchBoxChange} placeholder="Enter your keywords..." />
@@ -63,7 +73,7 @@ const Search = (props: Props) => {
                 {!searchResultLoading && !!searchResult &&
                     <div>
                         {searchResult.map((movie) =>
-                            <div key={movie.id} onClick={() => console.log("click")} className="searchBox__result__item flex">
+                            <div key={movie.id} onClick={() => redirectToMovie(movie.id)} className="searchBox__result__item flex">
                                 <img width="60" height="90" src={movie.poster_path === null ? noImage : `${thumbnailPath}/${movie.poster_path}`} />
                                 <div>
                                     <a>{movie.title}</a>

@@ -34,14 +34,14 @@ interface Movie {
 }
 const MovieDetail = () => {
     const { id } = useParams<{ id?: string }>();
-
+    
     const [movieDetail, setMovieDetail] = React.useState(null as Movie);
 
     React.useEffect(() => {
         getMovieDetail(Number(id)).then((respone) => {
             setMovieDetail(respone.data);
         });
-    }, []);
+    }, [id]);
 
     return (
         <>
