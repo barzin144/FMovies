@@ -1,6 +1,6 @@
 import React from "react";
 import Slider, { Settings } from "react-slick";
-import { getPopularMovies, backdrop_path } from "../helper";
+import { getPopularMovies, backdropPath } from "../helper";
 
 interface Movie {
   id: number,
@@ -35,7 +35,7 @@ const PopularMovieSlider = () => {
       {!!popularMovies && <Slider {...settings}>
         {popularMovies.map((movie) => {
           return <div key={movie.id} className="slider__slide">
-            <div className="slider__slide__image" style={{ backgroundImage: `url(${backdrop_path}/${movie.backdrop_path})` }}>
+            <div className="slider__slide__image" style={{ backgroundImage: `url(${backdropPath}/${movie.backdrop_path})` }}>
               <div className="container">
                 <div className="slider__info" >
                   <h1>{movie.title}</h1>

@@ -8,7 +8,8 @@ const config = {
 };
 
 export const thumbnailPath = "https://image.tmdb.org/t/p/w154";
-export const backdrop_path = "https://image.tmdb.org/t/p/w1280";
+export const backdropPath = "https://image.tmdb.org/t/p/w1280";
+export const posterPath = "https://image.tmdb.org/t/p/w342";
 
 export const getGenres = (): Promise<AxiosResponse<any>> => {
     return axios.get('/genre/movie/list', config);
@@ -30,4 +31,8 @@ export const cancelMovieSearchToken = () => {
 
 export const getPopularMovies = ():Promise<AxiosResponse<any>> => {
     return axios.get('/discover/movie?sort_by=popularity.desc&include_adult=false&page=1', config);
+}
+
+export const getTrendingMovies = ():Promise<AxiosResponse<any>> => {
+    return axios.get('/trending/movie/week', config);
 }

@@ -24,9 +24,9 @@
 			}
 		}
 		h1 {
-			font-size: 3em;
+			font-size: $font_xlg;
 			@include breakpoint-down(small) {
-				font-size: 2em;
+				font-size: $font-lg;
 			}
 			font-weight: bold;
 			margin: 0;

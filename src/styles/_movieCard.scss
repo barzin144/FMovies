@@ -1,0 +1,27 @@
+.movieCard {
+	flex: 0 1 24%;
+	color: $Grayish_Blue;
+	font-size: $font-sm;
+	margin: pxToRem(5) pxToRem(5) pxToRem(20) pxToRem(5);
+	cursor: pointer;
+	img {
+		width: pxToRem(200);
+		border-radius: pxToRem(5);
+		margin-bottom: pxToRem(5);
+	}
+	&__title {
+		width: pxToRem(200);
+		display: block;
+		margin-bottom: pxToRem(5);
+		font-size: $font-med;
+		font-weight: bold;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #fff;
+	}
+	&__releaseDate {
+		display: inline-block;
+		margin-right: pxToRem(5);
+	}
+}
