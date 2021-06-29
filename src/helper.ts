@@ -30,7 +30,7 @@ export const cancelMovieSearchToken = () => {
 }
 
 export const getPopularMovies = ():Promise<AxiosResponse<any>> => {
-    return axios.get('/discover/movie?sort_by=popularity.desc&include_adult=false&page=1', config);
+    return axios.get('/discover/movie?sort_by=popularity.desc&vote_average.gte=1&include_adult=false&page=1', config);
 }
 
 export const getTrendingMovies = ():Promise<AxiosResponse<any>> => {
