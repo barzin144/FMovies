@@ -36,3 +36,7 @@ export const getPopularMovies = ():Promise<AxiosResponse<any>> => {
 export const getTrendingMovies = ():Promise<AxiosResponse<any>> => {
     return axios.get('/trending/movie/week', config);
 }
+
+export const getMovieDetail = (id: number):Promise<AxiosResponse<any>> => {
+    return axios.get(`/movie/${id}}?language=en-US&append_to_response=credits`, config);
+}
