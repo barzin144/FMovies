@@ -1,5 +1,7 @@
 import React from "react";
+import PopularMovies from "./popularMovies";
 import PopularMovieSlider from "./popularMovieSlider";
+import TopMovies from "./topMovies";
 import TrendingMovies from "./trendingMovies";
 
 const Home = () => {
@@ -7,6 +9,8 @@ const Home = () => {
         <>
         <PopularMovieSlider/>
         <TrendingMovies/>
+        <TopMovies/>
+        <PopularMovies/>
         </>
     );
 }

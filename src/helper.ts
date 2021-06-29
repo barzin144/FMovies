@@ -40,3 +40,7 @@ export const getTrendingMovies = ():Promise<AxiosResponse<any>> => {
 export const getMovieDetail = (id: number):Promise<AxiosResponse<any>> => {
     return axios.get(`/movie/${id}}?language=en-US&append_to_response=credits`, config);
 }
+
+export const getTopMovies = ():Promise<AxiosResponse<any>> => {
+    return axios.get(`/discover/movie?language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=10000`, config);
+}
