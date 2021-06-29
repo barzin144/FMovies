@@ -15,7 +15,7 @@ const TopMovies = () => {
 
     React.useEffect(() => {
         getTopMovies().then((respone) => {
-            setTopMovies(respone.data.results);
+            setTopMovies(respone.data.results.slice(0, 15));
         });
     }, []);
 

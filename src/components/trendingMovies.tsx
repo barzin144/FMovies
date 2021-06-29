@@ -15,7 +15,7 @@ const TrendingMovies = () => {
 
     React.useEffect(() => {
         getTrendingMovies().then((respone) => {
-            setTrendingMovies(respone.data.results);
+            setTrendingMovies(respone.data.results.slice(0, 15));
         });
     }, []);
 

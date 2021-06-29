@@ -1,9 +1,6 @@
 .trending {
 	&__title {
-		font-size: $font-xlg;
-		@include breakpoint-down(small) {
-			font-size: $font-lg;
-		}
+		font-size: $font-lg;
 		font-weight: bold;
 		display: inline-block;
 		position: relative;
@@ -25,9 +22,6 @@
 	&__movies {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
-		@include breakpoint-down(small) {
-			justify-content: center;
-		}
+		justify-content: flex-start;
 	}
 }

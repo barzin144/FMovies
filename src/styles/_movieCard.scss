@@ -1,16 +1,23 @@
 .movieCard {
-	flex: 0 1 24%;
+	width: 19%;
+	@include breakpoint-down(medium) {
+		width: 30%;
+	}
+	@include breakpoint-down(small) {
+		width: 45%;
+	}
+
 	color: $Grayish_Blue;
 	font-size: $font-sm;
-	margin: pxToRem(5) pxToRem(5) pxToRem(20) pxToRem(5);
+	margin: pxToRem(10) pxToRem(5) pxToRem(20) pxToRem(5);
 	cursor: pointer;
 	img {
-		width: pxToRem(200);
+		width: 100%;
 		border-radius: pxToRem(5);
 		margin-bottom: pxToRem(5);
 	}
 	&__title {
-		width: pxToRem(200);
+		width: 100%;
 		display: block;
 		margin-bottom: pxToRem(5);
 		font-size: $font-med;

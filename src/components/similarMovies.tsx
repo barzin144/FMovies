@@ -1,5 +1,5 @@
 import React from "react";
-import { getPopularMovies } from "../helper";
+import { getSimilarMovies } from "../helper";
 import MovieCard from "./movieCard";
 
 interface Movie {
@@ -10,22 +10,23 @@ interface Movie {
     vote_average: number
 }
 
-const PopularMovies = () => {
-    const [popularMovies, setPopularMovies] = React.useState(null as Movie[]);
+const SimilarMovies = ({ id }: { id: number }) => {
+    const [similarMovies, setSimilarMovies] = React.useState(null as Movie[]);
 
     React.useEffect(() => {
-        getPopularMovies().then((respone) => {
-            setPopularMovies(respone.data.results.slice(0, 15));
+        getSimilarMovies(id).then((respone) => {
+            setSimilarMovies(respone.data.results.slice(0, 12));
+            window.scrollTo(0, 0);
         });
-    }, []);
+    }, [id]);
 
     return (
         <section className="container container--pall">
-            {!!popularMovies &&
+            {!!similarMovies &&
                 <div className="trending">
-                    <h2 className="trending__title">Popular movies</h2>
+                    <h2 className="trending__title">Recommended</h2>
                     <div className="trending__movies">
-                        {popularMovies.map((movie) => {
+                        {similarMovies.map((movie) => {
                             return (
                                 <MovieCard key={movie.id}
                                     poster={movie.poster_path}
@@ -39,4 +40,4 @@ const PopularMovies = () => {
     );
 }
 
-export default PopularMovies;
+export default SimilarMovies;

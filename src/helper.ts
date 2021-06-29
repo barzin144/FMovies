@@ -7,7 +7,7 @@ const config = {
     headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmRjZGZlMjJiN2M5ODIwMmMwY2FiOGM0YWFhNGE0ZCIsInN1YiI6IjYwZDMwODJlMzVjMzBhMDA3M2Q5YjQ0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lXL2hpo8gSurs41a1xLIZGzcoCj9wanresHwGv_apPs` }
 };
 
-export const thumbnailPath = "https://image.tmdb.org/t/p/w154";
+export const thumbnailPath = "https://image.tmdb.org/t/p/w342";
 export const backdropPath = "https://image.tmdb.org/t/p/w1280";
 export const posterPath = "https://image.tmdb.org/t/p/w342";
 
@@ -43,4 +43,8 @@ export const getMovieDetail = (id: number):Promise<AxiosResponse<any>> => {
 
 export const getTopMovies = ():Promise<AxiosResponse<any>> => {
     return axios.get(`/discover/movie?language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=10000`, config);
+}
+
+export const getSimilarMovies = (id: number):Promise<AxiosResponse<any>> => {
+    return axios.get(`/movie/${id}/similar?language=en-US`, config);
 }
