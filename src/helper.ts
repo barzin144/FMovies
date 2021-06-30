@@ -53,3 +53,7 @@ export const getSimilarMovies = (id: number):Promise<AxiosResponse<any>> => {
 export const getCastDetail = (id: number):Promise<AxiosResponse<any>> => {
     return axios.get(`/person/${id}}?language=en-US&append_to_response=movie_credits`, config);
 }
+
+export const getGenreMovies = (page: number, genre: number):Promise<AxiosResponse<any>> => {
+    return axios.get(`/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&vote_average.gte=1&with_genres=${genre}`, config);
+}

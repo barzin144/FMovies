@@ -67,7 +67,11 @@ const MovieDetail = () => {
                             <a className="movieDetail__info__meta"><i className="far fa-clock"></i> {movieDetail.runtime} mins</a>
                             <a className="movieDetail__info__overview">{movieDetail.overview}</a>
                             <div className="movieDetail__info__details"><span>Country:</span><span>{movieDetail.production_countries.map((country) => country.name).join(', ')}</span></div>
-                            <div className="movieDetail__info__details"><span>Genre:</span><span>{movieDetail.genres.map((genre) => genre.name).join(', ')}</span></div>
+                            <div className="movieDetail__info__details"><span>Genre:</span>
+                                <span>
+                                    {movieDetail.genres.map((genre) => <Link to={`/genres/${genre.id}`} key={genre.id}>{genre.name}, </Link>)}
+                                </span>
+                            </div>
                             <div className="movieDetail__info__details"><span>Release:</span><span>{movieDetail.release_date}</span></div>
                             <div className="movieDetail__info__details"><span>Director:</span><span>{directors.map((person) => person.name).join(', ')}</span></div>
                             <div className="movieDetail__info__details">

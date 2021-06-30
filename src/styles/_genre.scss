@@ -1,0 +1,28 @@
+.genreMovies {
+	margin-top: pxToRem(100);
+	&__title {
+		font-size: $font-lg;
+		font-weight: bold;
+		display: inline-block;
+		position: relative;
+		opacity: .8;
+		color: #fff;
+		margin: pxToRem(10) pxToRem(10) pxToRem(20) pxToRem(10);
+
+		&::before {
+			position: absolute;
+			content: "";
+			height: 1px;
+			width: 40%;
+			top: 120%;
+			left: 0;
+			background: $Grayish_Blue;
+		}
+	}
+
+	&__movies {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+}

@@ -1,25 +1,16 @@
 import React from "react";
 import logoImage from "../images/logo.png";
-import { getGenres } from "../helper";
 import Search from "./search";
 import { Link } from "react-router-dom";
 
-interface Genre {
-    id: number,
-    name: string
+interface Props {
+    genres: { id: number, name: string }[]
 }
 
-const Header = () => {
+const Header = (props: Props) => {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
     const [mobileSearchBoxOpen, setMobileSearchBoxOpen] = React.useState(false);
     const [openDropdown, setopenDropdown] = React.useState(false);
-    const [genres, setGenres] = React.useState([] as Genre[]);
-
-    React.useEffect(() => {
-        getGenres().then((respone) => {
-            setGenres(respone.data.genres.map((genre: any) => ({ id: genre.id, name: genre.name })));
-        });
-    }, []);
 
     const hideDropdown = () => {
         setopenDropdown(false);
@@ -58,7 +49,7 @@ const Header = () => {
                         <div>
                             <a className="header__links__title" onMouseEnter={showDropdown} onMouseLeave={hideDropdown} href="#">Genre</a>
                             {openDropdown && <div onMouseEnter={showDropdown} onMouseLeave={hideDropdown} className="header__links__dropdown">
-                                {!!genres && genres.map((genre) => <Link to={`/Genres/${genre.id}`} key={genre.id}>{genre.name}</Link>)}
+                                {!!props.genres && props.genres.map((genre) => <Link to={`/Genres/${genre.id}`} key={genre.id}>{genre.name}</Link>)}
                             </div>}
                         </div>
                         <div>
@@ -77,7 +68,7 @@ const Header = () => {
                 <a onClick={toggleDropdown} >Genre<i className={`fa ${openDropdown ? "fa-minus" : "fa-plus"}`}></i></a>
                 <div>
                     {openDropdown && <div className="header__links__mobileDropdown">
-                        {!!genres && genres.map((genre) => <Link className="link" to={`/Genres/${genre.id}`} key={genre.id}>{genre.name}</Link>)}
+                        {!!props.genres && props.genres.map((genre) => <Link className="link" to={`/Genres/${genre.id}`} key={genre.id}>{genre.name}</Link>)}
                     </div>}
                 </div>
                 <div className="divider"></div>
