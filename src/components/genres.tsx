@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { getGenreMovies } from "../helper";
 import MovieCard from "./movieCard";
 
@@ -18,14 +18,15 @@ interface Props {
 const Genre = (props: Props) => {
   const { id } = useParams<{ id?: string }>();
   const [genreMovies, setGenreMovies] = React.useState(null as Movie[]);
-
+  const history = useHistory();
+  
   React.useEffect(() => {
     getGenreMovies(1, Number(id)).then((respone) => {
       setGenreMovies(respone.data.results.slice(0, 15));
-    });
+    }).catch(() => history.push('/404'));
   }, [id]);
 
-  const genreTitle = props.genres.length > 0 ? props.genres.filter(x => x.id === Number(id))[0].name : '';
+  const genreTitle = props.genres.length > 0 ? props.genres.filter(x => x.id === Number(id))[0]?.name : '';
 
   return (
     <section className="container container--pall">
