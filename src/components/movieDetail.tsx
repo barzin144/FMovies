@@ -58,9 +58,9 @@ const MovieDetail = () => {
             {!!movieDetail && <section className="movieDetail" style={{ backgroundImage: `url(${backdropPath}/${movieDetail.backdrop_path})` }}>
                 <div className="container container--pall">
                     <div className="movieDetail__info flex">
-                        <div>
+                        {!!movieDetail.poster_path && <div>
                             <img src={`${posterPath}/${movieDetail.poster_path}`} />
-                        </div>
+                        </div>}
                         <div className="movieDetail__info__desc">
                             <a className="movieDetail__info__title">{movieDetail.title}</a>
                             <a className="movieDetail__info__meta"><i className="fas fa-star"></i> {movieDetail.vote_average}</a>

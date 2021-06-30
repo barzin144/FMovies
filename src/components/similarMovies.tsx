@@ -15,7 +15,8 @@ const SimilarMovies = ({ id }: { id: number }) => {
 
     React.useEffect(() => {
         getSimilarMovies(id).then((respone) => {
-            setSimilarMovies(respone.data.results.slice(0, 12));
+            const result: Movie[] = respone.data.results;
+            setSimilarMovies(result.filter(x => x.poster_path !== null).slice(0, 12));
             window.scrollTo(0, 0);
         });
     }, [id]);
