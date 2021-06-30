@@ -1,16 +1,5 @@
-.trending {
-	position: relative;
-	&__viewAll {
-		text-decoration: none;
-		color: $Soft_Blue;
-		display: inline-block;
-		position: absolute;
-		right: pxToRem(15);
-		top: pxToRem(20);
-		&:hover {
-			color: $Gray;
-		}
-	}
+.filteredMovies {
+	margin-top: pxToRem(100);
 	&__title {
 		font-size: $font-lg;
 		font-weight: bold;

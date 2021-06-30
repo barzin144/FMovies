@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { getPopularMovies } from "../helper";
 import MovieCard from "./movieCard";
 
@@ -23,6 +24,7 @@ const PopularMovies = () => {
         <section className="container container--pall">
             {!!popularMovies &&
                 <div className="trending">
+                    <Link className="trending__viewAll" to='/Movies/Filter/Pop'>View All <i className="fas fa-chevron-circle-right"></i></Link>
                     <h2 className="trending__title">Popular movies</h2>
                     <div className="trending__movies">
                         {popularMovies.map((movie) => {

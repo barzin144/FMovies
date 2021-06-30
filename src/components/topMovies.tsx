@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { getTopMovies } from "../helper";
 import MovieCard from "./movieCard";
 
@@ -23,6 +24,7 @@ const TopMovies = () => {
         <section className="container container--pall">
             {!!topMovies &&
                 <div className="trending">
+                    <Link className="trending__viewAll" to='/Movies/Filter/Top'>View All <i className="fas fa-chevron-circle-right"></i></Link>
                     <h2 className="trending__title">Top IMDb movies</h2>
                     <div className="trending__movies">
                         {topMovies.map((movie) => {

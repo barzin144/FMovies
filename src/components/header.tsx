@@ -53,7 +53,7 @@ const Header = (props: Props) => {
                             </div>}
                         </div>
                         <div>
-                            <Link className="header__links__title" to="/Movies">Movies</Link>
+                            <Link className="header__links__title" to="/Movies/Filter/Top">Movies</Link>
                         </div>
                         <Search />
                     </div>
@@ -72,7 +72,7 @@ const Header = (props: Props) => {
                     </div>}
                 </div>
                 <div className="divider"></div>
-                <Link to="/Movies">Movies</Link>
+                <Link to="/Movies/Filter/Top">Movies</Link>
                 <div className="divider"></div>
             </div>}
         </header>

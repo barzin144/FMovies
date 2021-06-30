@@ -30,8 +30,8 @@ export const cancelMovieSearchToken = () => {
     cancelTokenSource.cancel("Operation canceled due to new request.");
 }
 
-export const getPopularMovies = ():Promise<AxiosResponse<any>> => {
-    return axios.get('/discover/movie?sort_by=popularity.desc&vote_average.gte=1&include_adult=false&page=1', config);
+export const getPopularMovies = (page: number = 1):Promise<AxiosResponse<any>> => {
+    return axios.get(`/discover/movie?sort_by=popularity.desc&vote_average.gte=1&include_adult=false&page=${page}`, config);
 }
 
 export const getTrendingMovies = ():Promise<AxiosResponse<any>> => {
@@ -42,8 +42,8 @@ export const getMovieDetail = (id: number):Promise<AxiosResponse<any>> => {
     return axios.get(`/movie/${id}}?language=en-US&append_to_response=credits`, config);
 }
 
-export const getTopMovies = ():Promise<AxiosResponse<any>> => {
-    return axios.get(`/discover/movie?language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=10000`, config);
+export const getTopMovies = (page:number = 1):Promise<AxiosResponse<any>> => {
+    return axios.get(`/discover/movie?language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=10000`, config);
 }
 
 export const getSimilarMovies = (id: number):Promise<AxiosResponse<any>> => {
