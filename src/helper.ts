@@ -10,6 +10,7 @@ const config = {
 export const thumbnailPath = "https://image.tmdb.org/t/p/w342";
 export const backdropPath = "https://image.tmdb.org/t/p/w1280";
 export const posterPath = "https://image.tmdb.org/t/p/w342";
+export const profilePath = "https://image.tmdb.org/t/p/w185";
 
 export const getGenres = (): Promise<AxiosResponse<any>> => {
     return axios.get('/genre/movie/list', config);
@@ -47,4 +48,8 @@ export const getTopMovies = ():Promise<AxiosResponse<any>> => {
 
 export const getSimilarMovies = (id: number):Promise<AxiosResponse<any>> => {
     return axios.get(`/movie/${id}/similar?language=en-US`, config);
+}
+
+export const getCastDetail = (id: number):Promise<AxiosResponse<any>> => {
+    return axios.get(`/person/${id}}?language=en-US&append_to_response=movie_credits`, config);
 }

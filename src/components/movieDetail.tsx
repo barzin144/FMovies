@@ -1,6 +1,6 @@
 import React from "react";
 import { backdropPath, getMovieDetail, posterPath } from "../helper";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SimilarMovies from "./similarMovies";
 
 interface Movie {
@@ -13,17 +13,8 @@ interface Movie {
         name: string
     }],
     credits: {
-        cast: [{
-            id: number,
-            name: string,
-            known_for_department: string,
-            order: number
-        }],
-        crew: [{
-            id: number,
-            name: string,
-            job: string
-        }]
+        cast: Cast[],
+        crew: Crew[]
     },
     overview: string,
     poster_path: string,
@@ -33,17 +24,34 @@ interface Movie {
     title: string,
     vote_average: number
 }
-
+interface Cast {
+    id: number,
+    name: string,
+    known_for_department: string,
+    order: number
+}
+interface Crew {
+    id: number,
+    name: string,
+    job: string
+}
 const MovieDetail = () => {
     const { id } = useParams<{ id?: string }>();
 
     const [movieDetail, setMovieDetail] = React.useState(null as Movie);
+    let cast: Cast[] = null;
+    let directors: Crew[] = null;
 
     React.useEffect(() => {
         getMovieDetail(Number(id)).then((respone) => {
             setMovieDetail(respone.data);
         });
     }, [id]);
+
+    if (!!movieDetail) {
+        directors = movieDetail.credits.crew.filter((person) => person.job === 'Director');
+        cast = movieDetail.credits.cast.filter((person) => person.known_for_department === 'Acting' && person.order < 10);
+    }
 
     return (
         <>
@@ -61,8 +69,13 @@ const MovieDetail = () => {
                             <div className="movieDetail__info__details"><span>Country:</span><span>{movieDetail.production_countries.map((country) => country.name).join(', ')}</span></div>
                             <div className="movieDetail__info__details"><span>Genre:</span><span>{movieDetail.genres.map((genre) => genre.name).join(', ')}</span></div>
                             <div className="movieDetail__info__details"><span>Release:</span><span>{movieDetail.release_date}</span></div>
-                            <div className="movieDetail__info__details"><span>Director:</span><span>{movieDetail.credits.crew.filter((person) => person.job === 'Director').map((person) => person.name).join(', ')}</span></div>
-                            <div className="movieDetail__info__details"><span>Cast:</span><span>{movieDetail.credits.cast.filter((person) => person.known_for_department === 'Acting' && person.order < 10).map((person) => person.name).join(', ')}</span></div>
+                            <div className="movieDetail__info__details"><span>Director:</span><span>{directors.map((person) => person.name).join(', ')}</span></div>
+                            <div className="movieDetail__info__details">
+                                <span>Cast:</span>
+                                <span>
+                                    {cast.map((person) => <Link to={`/casts/${person.id}`} key={person.id}>{person.name}, </Link>)}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

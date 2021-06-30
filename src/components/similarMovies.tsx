@@ -21,8 +21,8 @@ const SimilarMovies = ({ id }: { id: number }) => {
     }, [id]);
 
     return (
-        <section className="container container--pall">
-            {!!similarMovies &&
+        <>
+            {!!similarMovies && similarMovies.length > 0 && <section className="container container--pall">
                 <div className="trending">
                     <h2 className="trending__title">Recommended</h2>
                     <div className="trending__movies">
@@ -35,8 +35,9 @@ const SimilarMovies = ({ id }: { id: number }) => {
                                     voteAverage={movie.vote_average} />)
                         })}
                     </div>
-                </div>}
-        </section>
+                </div>
+            </section>}
+        </>
     );
 }
 

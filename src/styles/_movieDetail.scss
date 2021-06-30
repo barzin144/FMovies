@@ -106,6 +106,14 @@
 				&:nth-child(2) {
 					max-width: pxToRem(600);
 					line-height: 1.8;
+
+					> a {
+						color: #fff;
+
+						&:hover {
+							color: $Gray;
+						}
+					}
 				}
 				&:first-child {
 					flex: 0 0 pxToRem(100);

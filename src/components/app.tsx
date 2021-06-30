@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Casts from "./Casts";
 import Genres from "./genres";
 import Header from "./header";
 import Home from "./home";
@@ -15,6 +16,9 @@ const App = () => {
                 </Route>
                 <Route path="/genres">
                     <Genres />
+                </Route>
+                <Route path="/casts">
+                    <Casts />
                 </Route>
                 <Route exact path="/">
                     <Home />
