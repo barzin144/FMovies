@@ -1,6 +1,6 @@
 import React from "react";
 import { getCastDetail, profilePath } from "../helper";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import MovieCard from "./movieCard";
 
 interface Movie {
@@ -21,14 +21,15 @@ interface Cast {
 
 const CastDetail = () => {
     const { id } = useParams<{ id?: string }>();
-
+    const history = useHistory();
+    
     const [castDetail, setCastDetail] = React.useState(null as Cast);
     let movies: Movie[] = null;
 
     React.useEffect(() => {
         getCastDetail(Number(id)).then((respone) => {
             setCastDetail(respone.data);
-        });
+        }).catch(()=> history.push('/404'));
     }, [id]);
 
     if (!!castDetail) {

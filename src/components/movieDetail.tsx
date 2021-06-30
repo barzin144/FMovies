@@ -1,6 +1,6 @@
 import React from "react";
 import { backdropPath, getMovieDetail, posterPath } from "../helper";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import SimilarMovies from "./similarMovies";
 
 interface Movie {
@@ -37,7 +37,7 @@ interface Crew {
 }
 const MovieDetail = () => {
     const { id } = useParams<{ id?: string }>();
-
+    const history = useHistory();
     const [movieDetail, setMovieDetail] = React.useState(null as Movie);
     let cast: Cast[] = null;
     let directors: Crew[] = null;
@@ -45,7 +45,7 @@ const MovieDetail = () => {
     React.useEffect(() => {
         getMovieDetail(Number(id)).then((respone) => {
             setMovieDetail(respone.data);
-        });
+        }).catch(() => history.push('/404'));
     }, [id]);
 
     if (!!movieDetail) {

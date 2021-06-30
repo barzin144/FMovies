@@ -5,6 +5,7 @@ import Genres from "./genres";
 import Header from "./header";
 import Home from "./home";
 import Movies from "./movies";
+import NotFound from "./notFound";
 
 const App = () => {
     return (
@@ -22,6 +23,9 @@ const App = () => {
                 </Route>
                 <Route exact path="/">
                     <Home />
+                </Route>
+                <Route path="*">
+                   <NotFound/>
                 </Route>
             </Switch>
         </Router>
