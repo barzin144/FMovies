@@ -1,0 +1,25 @@
+.pagination {
+	margin-bottom: pxToRem(50);
+
+	.active {
+		color: $Very_Dark_Blue;
+		background-color: $Gray;
+	}
+	> a {
+		display: inline-block;
+		border-radius: pxToRem(5);
+		padding: pxToRem(10);
+		font-weight: bold;
+		color: #fff;
+		background-color: $Soft_Blue;
+		margin: pxToRem(3);
+		cursor: pointer;
+	}
+	> span {
+		display: inline-block;
+		padding: pxToRem(10);
+		font-weight: bold;
+		color: #fff;
+		margin: pxToRem(3);
+	}
+}
