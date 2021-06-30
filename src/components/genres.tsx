@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, useHistory, useParams, useRouteMatch, useLocation } from "react-router-dom";
 import { getGenreMovies } from "../helper";
 import MovieCard from "./movieCard";
+import NotFound from "./notFound";
 import Pagination from "./pagination";
 
 interface Movie {
@@ -30,6 +31,7 @@ const Genre = (props: Props) => {
     getGenreMovies(currentPage, Number(id)).then((respone) => {
       setGenreMovies(respone.data.results.slice(0, 15));
       setTotalPages(respone.data.total_pages);
+      document.title = `${genreTitle} movies - FMovies`;
     }).catch(() => history.push('/404'));
   }, [id, page]);
 
@@ -71,7 +73,7 @@ const Genres = (props: Props) => {
           <Genre {...props} />
         </Route>
         <Route path={match.path}>
-          <h3>Please select a genre.</h3>
+         <NotFound/>
         </Route>
       </Switch>
     </>

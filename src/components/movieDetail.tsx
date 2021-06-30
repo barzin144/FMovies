@@ -45,6 +45,7 @@ const MovieDetail = () => {
     React.useEffect(() => {
         getMovieDetail(Number(id)).then((respone) => {
             setMovieDetail(respone.data);
+            document.title = `${respone.data.title} - FMovies`;
         }).catch(() => history.push('/404'));
     }, [id]);
 

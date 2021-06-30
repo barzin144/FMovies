@@ -5,12 +5,16 @@ import TopMovies from "./topMovies";
 import TrendingMovies from "./trendingMovies";
 
 const Home = () => {
+    React.useEffect(() => {
+        document.title = 'Home - FMovies';
+    }, []);
+
     return (
         <>
-        <PopularMovieSlider/>
-        <TrendingMovies/>
-        <TopMovies/>
-        <PopularMovies/>
+            <PopularMovieSlider />
+            <TrendingMovies />
+            <TopMovies />
+            <PopularMovies />
         </>
     );
 }

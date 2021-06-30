@@ -29,6 +29,7 @@ const CastDetail = () => {
     React.useEffect(() => {
         getCastDetail(Number(id)).then((respone) => {
             setCastDetail(respone.data);
+            document.title = `${respone.data.name} - FMovies`;
         }).catch(()=> history.push('/404'));
     }, [id]);
 
